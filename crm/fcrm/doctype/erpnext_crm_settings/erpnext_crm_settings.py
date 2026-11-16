@@ -127,7 +127,7 @@ class ERPNextCRMSettings(Document):
 				{
 					"fieldname": "crm_deal",
 					"fieldtype": "Data",
-					"label": "Frappe CRM Deal",
+					"label": "Sensora Deal",
 					"read_only": 1,
 					"insert_after": "party_name",
 				}
@@ -137,7 +137,7 @@ class ERPNextCRMSettings(Document):
 				{
 					"fieldname": "crm_deal",
 					"fieldtype": "Data",
-					"label": "Frappe CRM Deal",
+					"label": "Sensora Deal",
 					"read_only": 1,
 					"insert_after": "prospect_name",
 				}

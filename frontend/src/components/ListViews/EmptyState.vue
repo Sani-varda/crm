@@ -31,13 +31,6 @@
           iconLeft="lucide-upload"
           :route="{ name: 'NewDataImport', params: { doctype: importDoctype } }"
         />
-        <Button
-          v-if="docsLink"
-          variant="outline"
-          :label="__('Documentation')"
-          iconLeft="lucide-external-link"
-          :href="docsLink"
-        />
       </div>
     </div>
   </div>

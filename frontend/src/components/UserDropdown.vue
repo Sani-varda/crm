@@ -146,19 +146,10 @@ function getStandardItem(item) {
         condition: () => !isMobileView.value,
       }
     case 'login_to_fc':
-      if (canManageBilling) {
-        return {
-          icon: markRaw(CreditCardIcon),
-          label: __('Manage Billing'),
-          onClick: () => openBilling(),
-          condition: () => !isMobileView.value,
-        }
-      }
       return {
-        icon: h(FrappeCloudIcon),
-        label: __(item.label),
-        onClick: () => confirmLoginToFrappeCloud(),
-        condition: () => !isMobileView.value && window.is_fc_site,
+        icon: markRaw(CreditCardIcon),
+        label: __('Manage Billing'),
+        condition: () => false,
       }
     case 'about':
       return {

@@ -1,10 +1,10 @@
 import frappe
 
 app_name = "crm"
-app_title = "Frappe CRM"
-app_publisher = "Frappe Technologies Pvt. Ltd."
-app_description = "Kick-ass Open Source CRM"
-app_email = "shariq@frappe.io"
+app_title = "Sensora - Customer Relation Management"
+app_publisher = "Sensora"
+app_description = "Sensora - Customer Relation Management (www.sensora.co.in)"
+app_email = "support@sensora.co.in"
 app_license = "AGPLv3"
 app_icon_url = "/assets/crm/images/logo.svg"
 app_icon_title = "CRM"
@@ -285,6 +285,7 @@ doc_events = {
 		"on_update": [
 			"crm.api.whatsapp.notify_agent",
 			"crm.automation.events.on_whatsapp_message",
+			"crm.api.chatbot.on_incoming_whatsapp_message",
 		],
 	},
 	"CRM Deal": {

@@ -142,15 +142,6 @@
             </template>
           </SidebarItem>
           <SidebarItem
-            v-if="isOnboardingStepsCompleted"
-            :label="__('Help')"
-            @click="toggleHelpModal"
-          >
-            <template #prefix>
-              <HelpIcon class="size-4 text-ink-gray-7" />
-            </template>
-          </SidebarItem>
-          <SidebarItem
             :label="isCollapsed ? __('Expand') : __('Collapse')"
             @click="isSidebarCollapsed = !isSidebarCollapsed"
           >
@@ -174,11 +165,12 @@
       v-model="showHelpModal"
       v-model:articles="articles"
       :logo="CRMLogo"
+      title="Sensora"
       :afterSkip="(step) => capture('onboarding_step_skipped_' + step)"
       :afterSkipAll="() => capture('onboarding_steps_skipped')"
       :afterReset="(step) => capture('onboarding_step_reset_' + step)"
       :afterResetAll="() => capture('onboarding_steps_reset')"
-      docsLink="https://docs.frappe.io/crm"
+      docsLink="https://www.sensora.co.in"
     />
     <IntermediateStepModal
       v-model="showIntermediateModal"
@@ -685,7 +677,7 @@ const articles = ref([
     ],
   },
   {
-    title: __('Frappe CRM mobile'),
+    title: __('Sensora mobile'),
     opened: false,
     subArticles: [
       { name: 'mobile-app-installation', title: __('Mobile App Installation') },

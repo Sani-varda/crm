@@ -1,4 +1,7 @@
-#!bin/bash
+#!/bin/bash
+
+# Disable client SSL requirement for local Docker MariaDB
+echo -e "[client]\nssl=0\n" > /home/frappe/.my.cnf
 
 if [ -d "/home/frappe/frappe-bench/apps/frappe" ]; then
     echo "Bench already exists, skipping init"
@@ -31,6 +34,7 @@ bench new-site crm.localhost \
     --admin-password admin \
     --no-mariadb-socket
 
+bench --site crm.localhost install-app whatsapp
 bench --site crm.localhost install-app crm
 bench --site crm.localhost set-config developer_mode 1
 bench --site crm.localhost set-config mute_emails 1
