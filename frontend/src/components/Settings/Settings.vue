@@ -143,11 +143,6 @@ const tabs = computed(() => {
           component: markRaw(DefaultsSettings),
           icon: MonitorCogIcon,
         },
-        {
-          label: __('Brand'),
-          icon: SparkleIcon,
-          component: markRaw(BrandSettings),
-        },
       ],
       condition: () => isManager(),
     },

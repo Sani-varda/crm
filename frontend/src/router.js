@@ -110,6 +110,12 @@ const routes = [
     component: () => import('@/pages/CallLogs.vue'),
   },
   {
+    path: '/whatsapp',
+    alias: '/whatsapp-automation',
+    name: 'WhatsAppAutomation',
+    component: () => import('@/pages/WhatsAppAutomation.vue'),
+  },
+  {
     alias: '/data-import',
     path: '/data-import/view/:viewType?',
     name: 'Data Imports',

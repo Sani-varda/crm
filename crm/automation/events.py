@@ -12,7 +12,14 @@ more than once is safe for flows: the outbox deduplicates a pending row per docu
 """
 
 import frappe
-from frappe.automation_engine import emit, is_enabled
+try:
+	from frappe.automation_engine import emit, is_enabled
+except ImportError:
+	def is_enabled():
+		return False
+
+	def emit(*args, **kwargs):
+		pass
 from frappe.utils import add_to_date, get_datetime, now
 
 CRM_REFERENCE_DOCTYPES = ("CRM Lead", "CRM Deal")
