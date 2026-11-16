@@ -81,6 +81,11 @@ const emailAccounts = createListResource({
       account.create_lead_from_incoming_email = Boolean(
         account.create_lead_from_incoming_email,
       )
+      account.use_ssl = Boolean(account.use_ssl)
+      account.use_starttls = Boolean(account.use_starttls)
+      account.use_tls = Boolean(account.use_tls)
+      account.use_ssl_for_outgoing = Boolean(account.use_ssl_for_outgoing)
+      account.login_id_is_different = Boolean(account.login_id_is_different)
     })
   },
 })
