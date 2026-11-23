@@ -86,6 +86,20 @@ def get_groq_api_key() -> str | None:
         or os.environ.get("GROQ_API_KEY")
     )
 
+def get_groq_model() -> str:
+    return (
+        frappe.conf.get("groq_model")
+        or os.environ.get("GROQ_MODEL")
+        or "openai/gpt-oss-120b"
+    )
+
+def get_groq_fast_model() -> str:
+    return (
+        frappe.conf.get("groq_fast_model")
+        or os.environ.get("GROQ_FAST_MODEL")
+        or "openai/gpt-oss-20b"
+    )
+
 def is_bot_paused(sender_profile: str) -> bool:
     """Returns True if the AI bot is currently paused for this parent."""
     if not sender_profile:
@@ -169,7 +183,7 @@ def process_groq_reply(
                 "Content-Type": "application/json"
             },
             json={
-                "model": "llama-3.3-70b-versatile",
+                "model": get_groq_model(),
                 "messages": messages,
                 "temperature": 0.4,
                 "max_tokens": 400
@@ -236,7 +250,7 @@ def _extract_and_update_lead_info(lead_name: str, text: str, api_key: str):
                 "Content-Type": "application/json"
             },
             json={
-                "model": "llama-3.1-8b-instant",
+                "model": get_groq_fast_model(),
                 "messages": [{"role": "user", "content": extract_prompt}],
                 "temperature": 0.1,
                 "response_format": {"type": "json_object"}
@@ -334,7 +348,7 @@ def get_chatbot_overview():
     return {
         "is_enabled": is_enabled,
         "has_api_key": bool(api_key),
-        "model": "llama-3.3-70b-versatile",
+        "model": get_groq_model(),
         "school": "International Delhi Public School (IDPS), Borivali West",
         "total_messages": total_messages,
         "incoming_count": incoming_count,
@@ -458,7 +472,7 @@ def test_admissions_bot(query: str):
                 "Content-Type": "application/json"
             },
             json={
-                "model": "llama-3.3-70b-versatile",
+                "model": get_groq_model(),
                 "messages": [
                     {"role": "system", "content": IDPS_KNOWLEDGE_BASE},
                     {"role": "user", "content": query}
@@ -559,7 +573,7 @@ def simulate_parent_inquiry(phone_number: str, message: str, parent_name: str | 
                 "https://api.groq.com/openai/v1/chat/completions",
                 headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
                 json={
-                    "model": "llama-3.3-70b-versatile",
+                    "model": get_groq_model(),
                     "messages": [
                         {"role": "system", "content": IDPS_KNOWLEDGE_BASE},
                         {"role": "user", "content": message}
@@ -690,7 +704,7 @@ def get_connection_details():
         "has_active_account": bool(default_acc and default_acc.get("status") == "Active"),
         "account": default_acc,
         "has_groq_key": bool(get_groq_api_key()),
-        "groq_model": "llama-3.3-70b-versatile",
+        "groq_model": get_groq_model(),
         "lead_sync_endpoint": f"{base_url}/api/method/crm.api.chatbot.create_website_lead",
         "school_name": "IDPS Borivali (International Delhi Public School)",
         "website": "www.idpsborivali.com"

@@ -16,7 +16,7 @@
               </span>
             </Badge>
             <Badge :theme="connection.has_groq_key ? 'green' : 'gray'" size="sm">
-              {{ connection.has_groq_key ? 'Groq Llama 3.3 Active' : 'Groq Standby' }}
+              {{ connection.has_groq_key ? 'Groq Active' : 'Groq Standby' }}
             </Badge>
           </div>
           <p class="text-xs text-ink-gray-5">IDPS Borivali Admissions · Live Real-time WhatsApp Cloud API & AI Counselor</p>
@@ -277,7 +277,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div class="border rounded-xl p-4 bg-surface-white shadow-sm">
           <div class="text-xs text-ink-gray-5 font-medium">Active AI Model</div>
-          <div class="text-lg font-bold text-ink-gray-9 mt-1">Llama 3.3 70B Versatile</div>
+          <div class="text-lg font-bold text-ink-gray-9 mt-1">{{ stats.model || connection.groq_model || 'Groq AI Model' }}</div>
           <p class="text-xs text-ink-gray-5 mt-1">Hosted on Groq LPU (~280 tokens/sec response time)</p>
         </div>
         <div class="border rounded-xl p-4 bg-surface-white shadow-sm">
@@ -567,7 +567,7 @@ async function runTestQuery() {
       query: testQuery.value.trim()
     })
     testResult.value = res.reply || res.error || 'No response.'
-    testResultMode.value = res.mode === 'live' ? 'Live Groq Llama 3.3 70B' : 'Simulated Response'
+    testResultMode.value = res.mode === 'live' ? `Live Groq (${res.model || connection.value.groq_model || 'Active'})` : 'Simulated Response'
   } catch (e) {
     testResult.value = 'Error running test query: ' + e.message
   } finally {
