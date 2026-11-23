@@ -367,10 +367,10 @@ def get_conversation_history(recipient: str):
         if direction == "Outgoing":
             if owner == "Administrator":
                 sender_type = "bot"
-                sender_label = "🤖 Admissions AI (Groq)"
+                sender_label = "Admissions AI (Groq)"
             else:
                 sender_type = "counselor"
-                sender_label = f"👩‍💼 Counselor ({owner})"
+                sender_label = f"Counselor ({owner})"
 
         enriched.append({
             "name": m.get("name"),

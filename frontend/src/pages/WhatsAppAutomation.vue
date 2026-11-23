@@ -215,8 +215,8 @@
             >
               <div class="text-[10px] text-ink-gray-4 mb-1 px-1">
                 <span v-if="msg.direction === 'inbound'">Parent ({{ msg.sender_phone }})</span>
-                <span v-else-if="msg.sender_type === 'ai_bot'" class="text-emerald-700 font-semibold">🤖 IDPS AI Counselor</span>
-                <span v-else class="text-blue-700 font-semibold">👤 Admissions Officer</span>
+                <span v-else-if="msg.sender_type === 'ai_bot'" class="text-emerald-700 font-semibold">IDPS AI Counselor</span>
+                <span v-else class="text-blue-700 font-semibold">Admissions Officer</span>
                 · {{ formatMessageTime(msg.timestamp) }}
               </div>
 
@@ -241,7 +241,7 @@
           <!-- Counselor Live Reply Composer -->
           <div class="p-3 border-t bg-surface-white">
             <div v-if="!currentConv.is_bot_paused" class="mb-2 text-[11px] text-amber-700 bg-amber-50 border border-amber-200 rounded px-2 py-1 flex items-center justify-between">
-              <span>💡 Sending a manual message will automatically pause AI replies for 2 hours so you can speak directly with the parent.</span>
+              <span>Sending a manual message will automatically pause AI replies for 2 hours so you can speak directly with the parent.</span>
             </div>
 
             <div class="flex items-end gap-2">
@@ -296,7 +296,7 @@
       <div class="border rounded-xl p-5 bg-surface-white shadow-sm space-y-4">
         <div>
           <div class="flex items-center justify-between">
-            <h2 class="text-base font-bold text-ink-gray-9">🚀 Simulate Live Parent WhatsApp Inquiry</h2>
+            <h2 class="text-base font-bold text-ink-gray-9">Simulate Live Parent WhatsApp Inquiry</h2>
             <Badge theme="green" size="sm">End-to-End Pipeline</Badge>
           </div>
           <p class="text-xs text-ink-gray-5">Simulates an incoming WhatsApp message as if sent by a parent. It automatically creates a CRM Lead, triggers the AI Admissions Counselor, updates lead fields, and appears in the Live Chats tab.</p>
@@ -340,7 +340,7 @@
       <!-- Quick AI Bot Testing Sandbox -->
       <div class="border rounded-xl p-5 bg-surface-white shadow-sm space-y-4">
         <div>
-          <h2 class="text-base font-bold text-ink-gray-9">🧪 Quick Question Testing (Sandbox)</h2>
+          <h2 class="text-base font-bold text-ink-gray-9">Quick Question Testing (Sandbox)</h2>
           <p class="text-xs text-ink-gray-5">Ask a single question as a prospective parent to preview the AI counselor's reasoning and response.</p>
         </div>
 
@@ -364,7 +364,7 @@
 
         <div v-if="testResult" class="rounded-lg border bg-surface-gray-1 p-4">
           <div class="flex items-center justify-between mb-2">
-            <span class="text-xs font-semibold text-emerald-700">🤖 AI Admissions Counselor Preview</span>
+            <span class="text-xs font-semibold text-emerald-700">AI Admissions Counselor Preview</span>
             <span class="text-[10px] text-ink-gray-5">{{ testResultMode }}</span>
           </div>
           <p class="whitespace-pre-wrap text-sm text-ink-gray-9 leading-relaxed">{{ testResult }}</p>
@@ -541,7 +541,7 @@ async function simulateInquiry() {
       message: simMessage.value.trim()
     })
     if (res.status === 'success') {
-      simFeedback.value = `✓ Inquiry simulated! Created Lead: ${res.lead}. Switching to Live Chats...`
+      simFeedback.value = `Inquiry simulated! Created Lead: ${res.lead}. Switching to Live Chats...`
       await fetchOverview()
       setTimeout(() => {
         activeTab.value = 'chats'
